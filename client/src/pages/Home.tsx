@@ -6,6 +6,9 @@
  * - 위드AI솔루션 로고 좌상단 배치
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare global { interface Window { Kakao: any; } }
+
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -13,9 +16,12 @@ import {
   CheckCircle2,
   ChevronDown,
   Clock,
+  Copy,
   ExternalLink,
   GraduationCap,
+  Instagram,
   Monitor,
+  Share2,
   Sparkles,
   Star,
   Users,
@@ -23,8 +29,11 @@ import {
   XCircle,
   Zap,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const GOOGLE_FORM_URL = "https://forms.gle/fPqsBHYP691gBzXX6";
+const SHARE_TITLE = "캔바AI강사 심화과정 2급 오픈! | 민경쌤의 캔바AI연구소";
+const SHARE_DESC = "포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지! 단기 속성으로 캔바 강사 자격증 취득. ZOOM 라이브 + VOD 병행 수강 가능 🎨";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-dark-premium-b9isKLFNHQRkEwx8TtVU9G.webp";
 const CERT_BADGE = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/certificate-badge-9pDc7uQ4KFzmrjGArUuESa.webp";
@@ -83,8 +92,76 @@ const afterList = [
 ];
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+
+  // 카카오 SDK 초기화
+  useEffect(() => {
+    const loadKakao = () => {
+      const script = document.createElement("script");
+      script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
+      script.async = true;
+      script.onload = () => {
+        if (window.Kakao && !window.Kakao.isInitialized()) {
+          // 데모용 앱키 — 실제 배포 시 카카오 개발자 콘솔에서 발급한 JavaScript 앱키로 교체
+          window.Kakao.init("demo_key_replace_me");
+        }
+      };
+      document.head.appendChild(script);
+    };
+    loadKakao();
+  }, []);
+
   const handleApply = () => {
     window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+  };
+
+  const handleKakaoShare = () => {
+    const pageUrl = window.location.href;
+    // 카카오 SDK가 로드되지 않았거나 앱키 미설정 시 카카오톡 링크 공유로 폴백
+    if (window.Kakao && window.Kakao.isInitialized()) {
+      try {
+        window.Kakao.Share.sendDefault({
+          objectType: "feed",
+          content: {
+            title: SHARE_TITLE,
+            description: SHARE_DESC,
+            imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-dark-premium-b9isKLFNHQRkEwx8TtVU9G.webp",
+            link: { mobileWebUrl: pageUrl, webUrl: pageUrl },
+          },
+          buttons: [
+            { title: "신청하기", link: { mobileWebUrl: GOOGLE_FORM_URL, webUrl: GOOGLE_FORM_URL } },
+            { title: "자세히 보기", link: { mobileWebUrl: pageUrl, webUrl: pageUrl } },
+          ],
+        });
+        return;
+      } catch (_) {}
+    }
+    // 폴백: 카카오톡 링크 공유 URL 방식
+    const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?app_key=demo&validation_action=default&validation_params=%7B%7D`;
+    const text = encodeURIComponent(`${SHARE_TITLE}\n${SHARE_DESC}\n\n👉 ${pageUrl}`);
+    window.open(`https://story.kakao.com/share?url=${encodeURIComponent(pageUrl)}`, "_blank");
+    void text; void kakaoUrl;
+  };
+
+  const handleInstagramShare = () => {
+    // 인스타그램은 직접 URL 공유 API가 없으므로 URL 복사 후 안내
+    const pageUrl = window.location.href;
+    navigator.clipboard.writeText(`${SHARE_TITLE}\n${SHARE_DESC}\n\n👉 ${pageUrl}`)
+      .then(() => {
+        alert("링크와 텍스트가 복사되었습니다!\n인스타그램 앱을 열고 스토리 또는 게시물에 붙여넣기 해주세요 📸");
+      })
+      .catch(() => {
+        alert(`아래 링크를 인스타그램에 공유해 주세요:\n${pageUrl}`);
+      });
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => alert("링크 복사에 실패했습니다. 주소창에서 직접 복사해 주세요."));
   };
 
   return (
@@ -612,6 +689,65 @@ export default function Home() {
               style={{ color: "rgba(240,238,255,0.35)" }}>
               👉 신청서 작성 후 입금 계좌로 수강료 납부 시 등록 완료
             </motion.p>
+
+            {/* SNS 공유 버튼 */}
+            <motion.div variants={fadeUp} className="mt-10">
+              <p className="text-sm font-semibold mb-4" style={{ color: "rgba(240,238,255,0.45)" }}>
+                <Share2 size={14} className="inline mr-1.5 mb-0.5" />
+                이 과정을 주변에 공유해 주세요!
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {/* 카카오톡 */}
+                <button
+                  onClick={handleKakaoShare}
+                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
+                  style={{
+                    background: "#FEE500",
+                    color: "#191919",
+                    boxShadow: "0 4px 16px rgba(254,229,0,0.3)",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#191919">
+                    <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.63 1.614 4.938 4.036 6.318L5 21l4.868-2.59A11.3 11.3 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
+                  </svg>
+                  카카오톡 공유
+                </button>
+
+                {/* 인스타그램 */}
+                <button
+                  onClick={handleInstagramShare}
+                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
+                  style={{
+                    background: "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                    color: "white",
+                    boxShadow: "0 4px 16px rgba(220,39,67,0.35)",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <Instagram size={17} />
+                  인스타그램 공유
+                </button>
+
+                {/* URL 복사 */}
+                <button
+                  onClick={handleCopyLink}
+                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
+                  style={{
+                    background: copied ? "rgba(168,85,247,0.25)" : "rgba(255,255,255,0.07)",
+                    color: copied ? "#C084FC" : "rgba(240,238,255,0.7)",
+                    border: `1px solid ${copied ? "rgba(168,85,247,0.5)" : "rgba(255,255,255,0.12)"}`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <Copy size={15} />
+                  {copied ? "복사됨 ✓" : "링크 복사"}
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
