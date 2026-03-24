@@ -171,7 +171,7 @@ export default function Home() {
               {[
                 { icon: <Clock size={13} />, label: "하루 1시간 이내" },
                 { icon: <Video size={13} />, label: "ZOOM 라이브 + VOD" },
-                { icon: <GraduationCap size={13} />, label: "국제 자격증 발급" },
+                { icon: <GraduationCap size={13} />, label: "자격증 발급" },
                 { icon: <BookOpen size={13} />, label: "총 10개 과제" },
               ].map((b, i) => (
                 <div key={i} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold"
@@ -521,7 +521,6 @@ export default function Home() {
                       "생성형AI 전문교육 강사",
                       "AI융합비즈포럼 AI수석연구원",
                       "서초여성가족플라자 AISW강사",
-                      "아바톡 크리퐁 앰버서더",
                       "수퍼톤 앰버서더",
                       "AI아트 작가 · 전시회 개최",
                       "어린이집·기업·교원 연수 다수",
@@ -533,7 +532,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.55)" }}>
-                    두 아이를 키우는 워킹맘으로, 초중학생부터 교사·기업 임직원까지 폭넓게 강의하며 현장에서 직접 검증된 노하우를 전달합니다. 리즈, 요코, 조코 캐릭터의 작가이기도 합니다!
+                    초중학생부터 교사·기업 임직원까지 폭넓게 강의하며 현장에서 직접 검증된 노하우를 전달합니다. 리즈, 요코, 조코 캐릭터의 작가이기도 합니다!
                   </p>
                 </div>
               </div>
@@ -555,7 +554,7 @@ export default function Home() {
               <span className="section-tag"><GraduationCap size={12} />자격증 안내</span>
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-6 mt-4">
-              수료 후 <span className="gradient-text">국제 자격증</span> 취득!
+              수료 후 <span className="gradient-text">자격증</span> 취득!
             </motion.h2>
             <motion.div variants={fadeUp} className="flex justify-center mb-8">
               <img src={CERT_BADGE} alt="자격증" className="w-28 h-28 object-contain float-anim" />
@@ -628,7 +627,7 @@ export default function Home() {
             크리메타쏭 대표 · 캔바지국장 · 생성형AI 전문강사 쏭리즈 민경쌤
           </p>
           <p className="text-xs" style={{ color: "rgba(240,238,255,0.3)" }}>
-            아바톡 크리퐁 앰버서더 · 수퍼톤 앰버서더
+            수퍼톤 앰버서더
           </p>
           <p className="text-xs mt-4" style={{ color: "rgba(240,238,255,0.2)" }}>
             © 2025 위드AI솔루션 · 민경쌤의 캔바AI연구소. All rights reserved.
