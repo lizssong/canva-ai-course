@@ -18,6 +18,7 @@ import {
   Clock,
   Copy,
   ExternalLink,
+  FileText,
   GraduationCap,
   Instagram,
   Monitor,
@@ -32,6 +33,7 @@ import {
 import { useEffect, useState } from "react";
 
 const GOOGLE_FORM_URL = "https://forms.gle/fPqsBHYP691gBzXX6";
+const BLOG_URL = "https://blog.naver.com/lizssong/224227651218";
 const SHARE_TITLE = "캔바AI강사 심화과정 2급 오픈! | 민경쌤의 캔바AI연구소";
 const SHARE_DESC = "포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지! 단기 속성으로 캔바 강사 자격증 취득. ZOOM 라이브 + VOD 병행 수강 가능 🎨";
 
@@ -276,6 +278,23 @@ export default function Home() {
               >
                 커리큘럼 보기
                 <ChevronDown size={16} />
+              </a>
+            </motion.div>
+
+            {/* 블로그 자세히 보기 링크 */}
+            <motion.div variants={fadeUp} className="mt-5">
+              <a
+                href={BLOG_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold transition-all group"
+                style={{ color: "rgba(240,238,255,0.5)" }}
+              >
+                <FileText size={14} style={{ color: "#A855F7" }} />
+                <span className="group-hover:underline" style={{ color: "rgba(240,238,255,0.6)" }}>
+                  자세한 내용 블로그에서 보기
+                </span>
+                <ExternalLink size={12} style={{ color: "rgba(168,85,247,0.6)" }} />
               </a>
             </motion.div>
           </motion.div>
@@ -611,6 +630,29 @@ export default function Home() {
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.55)" }}>
                     초중학생부터 교사·기업 임직원까지 폭넓게 강의하며 현장에서 직접 검증된 노하우를 전달합니다. 리즈, 요코, 조코 캐릭터의 작가이기도 합니다!
                   </p>
+                  <a
+                    href={BLOG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl text-xs font-bold transition-all"
+                    style={{
+                      background: "rgba(168,85,247,0.1)",
+                      border: "1px solid rgba(168,85,247,0.3)",
+                      color: "#C084FC",
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.2)";
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.5)";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.1)";
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.3)";
+                    }}
+                  >
+                    <FileText size={13} />
+                    강의 자세히 보러가기 (블로그)
+                    <ExternalLink size={11} />
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -765,7 +807,22 @@ export default function Home() {
           <p className="text-xs" style={{ color: "rgba(240,238,255,0.3)" }}>
             수퍼톤 앰버서더
           </p>
-          <p className="text-xs mt-4" style={{ color: "rgba(240,238,255,0.2)" }}>
+          <div className="flex justify-center mt-4 mb-2">
+            <a
+              href={BLOG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold transition-all"
+              style={{ color: "rgba(168,85,247,0.55)" }}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#A855F7")}
+              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(168,85,247,0.55)")}
+            >
+              <FileText size={12} />
+              강의 상세 블로그 보러가기
+              <ExternalLink size={11} />
+            </a>
+          </div>
+          <p className="text-xs mt-2" style={{ color: "rgba(240,238,255,0.2)" }}>
             © 2025 위드AI솔루션 · 민경쌤의 캔바AI연구소. All rights reserved.
           </p>
         </div>
