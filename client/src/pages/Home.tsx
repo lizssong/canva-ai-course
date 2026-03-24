@@ -576,29 +576,54 @@ export default function Home() {
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.55)" }}>
                     초중학생부터 교사·기업 임직원까지 폭넓게 강의하며 현장에서 직접 검증된 노하우를 전달합니다. 리즈, 요코, 조코 캐릭터의 작가이기도 합니다!
                   </p>
-                  <a
-                    href={BLOG_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl text-xs font-bold transition-all"
-                    style={{
-                      background: "rgba(168,85,247,0.1)",
-                      border: "1px solid rgba(168,85,247,0.3)",
-                      color: "#C084FC",
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.2)";
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.5)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.1)";
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.3)";
-                    }}
-                  >
-                    <FileText size={13} />
-                    강의 자세히 보러가기 (블로그)
-                    <ExternalLink size={11} />
-                  </a>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                    <a
+                      href={PROFILE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all"
+                      style={{
+                        background: "rgba(168,85,247,0.15)",
+                        border: "1px solid rgba(168,85,247,0.4)",
+                        color: "#C084FC",
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.28)";
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.65)";
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.15)";
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.4)";
+                      }}
+                    >
+                      <Users size={15} />
+                      프로필 보기
+                      <ExternalLink size={13} />
+                    </a>
+                    <a
+                      href={BLOG_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all"
+                      style={{
+                        background: "rgba(168,85,247,0.15)",
+                        border: "1px solid rgba(168,85,247,0.4)",
+                        color: "#C084FC",
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.28)";
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.65)";
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168,85,247,0.15)";
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.4)";
+                      }}
+                    >
+                      <FileText size={15} />
+                      강의 자세히 보러가기 (블로그)
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -693,9 +718,7 @@ export default function Home() {
           <p className="text-xs" style={{ color: "rgba(240,238,255,0.4)" }}>
             크리메타쏭 대표 · 캔바지국장 · 생성형AI 전문강사 쏭리즈 민경쌤
           </p>
-          <p className="text-xs" style={{ color: "rgba(240,238,255,0.3)" }}>
-            수퍼톤 앰버서더
-          </p>
+
           <div className="flex justify-center mt-4 mb-2">
             <a
               href={BLOG_URL}
