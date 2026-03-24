@@ -94,13 +94,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "#0D0B1A", color: "#F0EEFF" }}>
+    <div className="min-h-screen" style={{ background: "linear-gradient(160deg, #1A1035 0%, #130F28 40%, #1C0F35 100%)", color: "#F0EEFF" }}>
 
       {/* ── NAVBAR ── */}
       <nav
         className="fixed top-0 left-0 right-0 z-50"
         style={{
-          background: "rgba(13, 11, 26, 0.85)",
+          background: "rgba(20, 14, 40, 0.88)",
           backdropFilter: "blur(16px)",
           borderBottom: "1px solid rgba(168, 85, 247, 0.18)",
         }}
@@ -134,7 +134,7 @@ export default function Home() {
         {/* Overlay gradient */}
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, rgba(13,11,26,0.3) 0%, rgba(13,11,26,0.7) 60%, #0D0B1A 100%)" }}
+          style={{ background: "linear-gradient(180deg, rgba(20,14,40,0.25) 0%, rgba(20,14,40,0.65) 60%, #130F28 100%)" }}
         />
         {/* Glow orbs */}
         <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none"
@@ -231,7 +231,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── WHY CANVA NOW ── */}
-      <section className="py-20" style={{ background: "#0D0B1A" }}>
+      <section className="py-20" style={{ background: "transparent" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -338,7 +338,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── CURRICULUM ── */}
-      <section id="curriculum" className="py-20" style={{ background: "#0D0B1A" }}>
+      <section id="curriculum" className="py-20" style={{ background: "transparent" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -385,7 +385,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── SCHEDULE ── */}
-      <section className="py-20" style={{ background: "#110E22" }}>
+      <section className="py-20" style={{ background: "rgba(26,16,50,0.5)" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -395,7 +395,7 @@ export default function Home() {
               <span className="section-tag"><Calendar size={12} />SCHEDULE</span>
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-3">
-              <span className="gradient-text">3주 완성 스케줄</span>
+              <span className="gradient-text">2주 완성 스케줄</span>
             </motion.h2>
             <motion.p variants={fadeUp} style={{ color: "rgba(240,238,255,0.5)" }} className="text-sm">
               실시간 ZOOM 라이브 + VOD 영상 병행 수강 가능
@@ -474,7 +474,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── TARGET AUDIENCE ── */}
-      <section className="py-20" style={{ background: "#0D0B1A" }}>
+      <section className="py-20" style={{ background: "transparent" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -512,7 +512,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── INSTRUCTOR ── */}
-      <section className="py-20" style={{ background: "#110E22" }}>
+      <section className="py-20" style={{ background: "rgba(26,16,50,0.5)" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -634,7 +634,7 @@ export default function Home() {
       <div className="neon-divider" />
 
       {/* ── CERTIFICATE ── */}
-      <section className="py-20" style={{ background: "#0D0B1A" }}>
+      <section className="py-20" style={{ background: "transparent" }}>
         <div className="container">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
@@ -668,7 +668,7 @@ export default function Home() {
 
       {/* ── FINAL CTA ── */}
       <section className="py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1A0D2E 0%, #0D0B1A 50%, #1A0D2E 100%)" }}>
+        style={{ background: "linear-gradient(135deg, #221040 0%, #1A1035 50%, #221040 100%)" }}>
         {/* Glow orbs */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)" }} />
@@ -709,7 +709,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-10" style={{ background: "#080612", borderTop: "1px solid rgba(168,85,247,0.15)" }}>
+      <footer className="py-10" style={{ background: "#0E0B22", borderTop: "1px solid rgba(168,85,247,0.15)" }}>
         <div className="container text-center space-y-2">
           <div className="flex justify-center mb-3">
             <img src={LOGO_IMG} alt="위드AI솔루션" className="h-6 w-auto object-contain opacity-70" />
