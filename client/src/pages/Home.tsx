@@ -34,6 +34,8 @@ import { useEffect, useState } from "react";
 
 const GOOGLE_FORM_URL = "https://forms.gle/fPqsBHYP691gBzXX6";
 const BLOG_URL = "https://blog.naver.com/lizssong/224227651218";
+const PROFILE_URL = "https://litt.ly/ssongliz";
+const INSTRUCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/instructor-nobg_5b4214a9.png";
 const SHARE_TITLE = "캔바AI강사 심화과정 2급 오픈! | 민경쌤의 캔바AI연구소";
 const SHARE_DESC = "포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지! 단기 속성으로 캔바 강사 자격증 취득. ZOOM 라이브 + VOD 병행 수강 가능 🎨";
 
@@ -600,10 +602,29 @@ export default function Home() {
 
             <motion.div variants={fadeUp} className="glass-card rounded-3xl p-8">
               <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0"
-                  style={{ background: "rgba(168,85,247,0.15)", border: "1px solid rgba(168,85,247,0.3)" }}>
-                  👩‍🏫
-                </div>
+                {/* 강사 프로필 이미지 — 클릭 시 litt.ly 프로필로 연결 */}
+                <a
+                  href={PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 group relative"
+                  title="민경쌤 프로필 보기"
+                >
+                  <div className="relative w-28 h-28 rounded-full overflow-hidden transition-transform group-hover:scale-105"
+                    style={{ border: "2px solid rgba(168,85,247,0.5)", boxShadow: "0 0 18px rgba(168,85,247,0.35)" }}>
+                    <img
+                      src={INSTRUCTOR_IMG}
+                      alt="민경쌤"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  {/* hover 시 프로필 보기 툴팁 */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity
+                    text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap"
+                    style={{ background: "rgba(168,85,247,0.85)", color: "white" }}>
+                    프로필 보기
+                  </div>
+                </a>
                 <div className="space-y-4 flex-1">
                   <div>
                     <h3 className="text-xl font-black" style={{ color: "#F0EEFF" }}>쏭리즈 민경쌤</h3>
