@@ -6,8 +6,7 @@
  * - 위드AI솔루션 로고 좌상단 배치
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare global { interface Window { Kakao: any; } }
+
 
 import { motion } from "framer-motion";
 import {
@@ -16,13 +15,10 @@ import {
   CheckCircle2,
   ChevronDown,
   Clock,
-  Copy,
   ExternalLink,
   FileText,
   GraduationCap,
-  Instagram,
   Monitor,
-  Share2,
   Sparkles,
   Star,
   Users,
@@ -30,14 +26,13 @@ import {
   XCircle,
   Zap,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const GOOGLE_FORM_URL = "https://forms.gle/fPqsBHYP691gBzXX6";
 const BLOG_URL = "https://blog.naver.com/lizssong/224227651218";
 const PROFILE_URL = "https://litt.ly/ssongliz";
 const INSTRUCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/instructor-nobg_5b4214a9.png";
-const SHARE_TITLE = "캔바AI강사 심화과정 2급 오픈! | 민경쌤의 캔바AI연구소";
-const SHARE_DESC = "포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지! 단기 속성으로 캔바 강사 자격증 취득. ZOOM 라이브 + VOD 병행 수강 가능 🎨";
+
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-dark-premium-b9isKLFNHQRkEwx8TtVU9G.webp";
 const CERT_BADGE = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/certificate-badge-9pDc7uQ4KFzmrjGArUuESa.webp";
@@ -50,25 +45,23 @@ const fadeUp = {
 const stagger = { visible: { transition: { staggerChildren: 0.09 } } };
 
 const curriculum = [
-  { no: "01", icon: "🖥️", title: "캔바 인터페이스 완전 정복", desc: "기본 캔바 인터페이스 이해, 템플릿 활용법, 그리드·텍스트·이미지·도형 넣기" },
-  { no: "02", icon: "✨", title: "POP 효과로 홍보물 만들기", desc: "시선을 사로잡는 POP 효과 적용 & 퀄리티 있는 홍보물 제작" },
-  { no: "03", icon: "🤖", title: "캔바AI로 캐릭터·이미지 생성", desc: "AI 프롬프트로 나만의 캐릭터와 이미지 창작" },
-  { no: "04", icon: "🪄", title: "사진 편집 & Magic Studio", desc: "배경 제거, AI 확장, 마법 편집 기능 마스터" },
-  { no: "05", icon: "🎨", title: "컬러링북 만들기", desc: "아이들이 좋아하는 나만의 컬러링북 제작" },
-  { no: "06", icon: "🖌️", title: "수채화 라인아트 + 디지털아트", desc: "수채화 라인아트 + 디지털아트 만들어서 목업 넣기" },
-  { no: "07", icon: "💫", title: "포토샵 효과 내기", desc: "돈 버는 미러링 효과 + 얼굴 반 그림자와 질감 넣기" },
-  { no: "08", icon: "🎬", title: "스탑모션 만들기", desc: "생동감 넘치는 짧은 영상 콘텐츠 제작" },
-  { no: "09", icon: "📖", title: "전자책 디자인하기", desc: "내 지식을 수익화하는 전자책 표지·내지 디자인" },
-  { no: "10", icon: "🌐", title: "포트폴리오 홈페이지 만들기", desc: "나를 알리는 멋진 웹사이트 직접 제작" },
+  { no: "01", icon: "🖥️", title: "캔바 인터페이스 완전 정복", desc: "그리드, 텍스트, 이미지, 도형 활용법 — 기초부터 탄탄하게" },
+  { no: "02", icon: "✨", title: "POP 효과로 눈길 끄는 홍보물 만들기", desc: "시선을 사로잡는 POP 효과로 퀄리티 있는 홍보물 제작" },
+  { no: "03", icon: "💫", title: "포토샵 효과 — 미러링 + 얼굴 반 그림자·질감", desc: "돈 버는 미러링 효과 + 얼굴 반 그림자와 질감 넣기" },
+  { no: "04", icon: "🤖", title: "캔바AI로 캐릭터·이미지 생성 + Magic Studio 편집", desc: "AI 프롬프트로 나만의 캐릭터 창작 & 마법 편집 기능 마스터" },
+  { no: "05", icon: "📖", title: "컬러링북 전자책 디자인 완성 & 수익화", desc: "나만의 컬러링북 전자책을 완성하여 수익화하기" },
+  { no: "06", icon: "🖌️", title: "수채화 라인아트 + 디지털아트 & 목업 적용", desc: "수채화 라인아트 + 디지털아트 제작 후 목업에 적용" },
+  { no: "07", icon: "🎬", title: "캔바로 스탑모션 영상 만들기", desc: "생동감 넘치는 스탑모션 영상 콘텐츠 제작" },
+  { no: "08", icon: "🌐", title: "포트폴리오 홈페이지 제작 (캔바 웹사이트)", desc: "나를 알리는 멋진 포트폴리오 웹사이트 직접 제작" },
 ];
 
 const liveSchedule = [
-  { date: "3월 28일 (토)", time: "저녁 8시" },
+  { date: "3월 26일 (목)", time: "저녁 8시" },
   { date: "4월 1일 (수)", time: "저녁 8시" },
-  { date: "4월 10일 (금)", time: "저녁 8시" },
+  { date: "4월 8일 (수)", time: "저녁 8시" },
 ];
 
-const vodSchedule = ["3월 30일", "4월 2일", "4월 3일", "4월 4일", "4월 7일", "4월 8일"];
+const vodSchedule = ["3월 27일", "3월 30일", "4월 2일", "4월 3일", "4월 6일"];
 
 const targets = [
   "캔바 기초는 알지만 강사·전문가 수준으로 업그레이드하고 싶은 분",
@@ -96,76 +89,8 @@ const afterList = [
 ];
 
 export default function Home() {
-  const [copied, setCopied] = useState(false);
-
-  // 카카오 SDK 초기화
-  useEffect(() => {
-    const loadKakao = () => {
-      const script = document.createElement("script");
-      script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
-      script.async = true;
-      script.onload = () => {
-        if (window.Kakao && !window.Kakao.isInitialized()) {
-          // 데모용 앱키 — 실제 배포 시 카카오 개발자 콘솔에서 발급한 JavaScript 앱키로 교체
-          window.Kakao.init("demo_key_replace_me");
-        }
-      };
-      document.head.appendChild(script);
-    };
-    loadKakao();
-  }, []);
-
   const handleApply = () => {
     window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
-  };
-
-  const handleKakaoShare = () => {
-    const pageUrl = window.location.href;
-    // 카카오 SDK가 로드되지 않았거나 앱키 미설정 시 카카오톡 링크 공유로 폴백
-    if (window.Kakao && window.Kakao.isInitialized()) {
-      try {
-        window.Kakao.Share.sendDefault({
-          objectType: "feed",
-          content: {
-            title: SHARE_TITLE,
-            description: SHARE_DESC,
-            imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-dark-premium-b9isKLFNHQRkEwx8TtVU9G.webp",
-            link: { mobileWebUrl: pageUrl, webUrl: pageUrl },
-          },
-          buttons: [
-            { title: "신청하기", link: { mobileWebUrl: GOOGLE_FORM_URL, webUrl: GOOGLE_FORM_URL } },
-            { title: "자세히 보기", link: { mobileWebUrl: pageUrl, webUrl: pageUrl } },
-          ],
-        });
-        return;
-      } catch (_) {}
-    }
-    // 폴백: 카카오톡 링크 공유 URL 방식
-    const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?app_key=demo&validation_action=default&validation_params=%7B%7D`;
-    const text = encodeURIComponent(`${SHARE_TITLE}\n${SHARE_DESC}\n\n👉 ${pageUrl}`);
-    window.open(`https://story.kakao.com/share?url=${encodeURIComponent(pageUrl)}`, "_blank");
-    void text; void kakaoUrl;
-  };
-
-  const handleInstagramShare = () => {
-    // 인스타그램은 직접 URL 공유 API가 없으므로 URL 복사 후 안내
-    const pageUrl = window.location.href;
-    navigator.clipboard.writeText(`${SHARE_TITLE}\n${SHARE_DESC}\n\n👉 ${pageUrl}`)
-      .then(() => {
-        alert("링크와 텍스트가 복사되었습니다!\n인스타그램 앱을 열고 스토리 또는 게시물에 붙여넣기 해주세요 📸");
-      })
-      .catch(() => {
-        alert(`아래 링크를 인스타그램에 공유해 주세요:\n${pageUrl}`);
-      });
-  };
-
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      })
-      .catch(() => alert("링크 복사에 실패했습니다. 주소창에서 직접 복사해 주세요."));
   };
 
   return (
@@ -241,9 +166,9 @@ export default function Home() {
               <span className="gradient-text">캔바AI강사 심화과정 2급</span> 오픈!
             </motion.h2>
 
-            <motion.p variants={fadeUp} className="text-base sm:text-lg leading-relaxed mb-8"
+              <motion.p variants={fadeUp} className="text-base sm:text-lg leading-relaxed mb-8"
               style={{ color: "rgba(240,238,255,0.72)" }}>
-              포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지<br />
+              캔바 인터페이스부터 포토샵 효과, 스탑모션, 포트폴리오 홈페이지까지<br />
               <strong style={{ color: "#C084FC" }}>실전 8가지 핵심 스킬</strong>을 단기 속성으로 완성
             </motion.p>
 
@@ -253,7 +178,7 @@ export default function Home() {
                 { icon: <Clock size={13} />, label: "하루 1시간 이내" },
                 { icon: <Video size={13} />, label: "ZOOM 라이브 + VOD" },
                 { icon: <GraduationCap size={13} />, label: "자격증 발급" },
-                { icon: <BookOpen size={13} />, label: "총 10개 과제" },
+                { icon: <BookOpen size={13} />, label: "총 8개 과제" },
               ].map((b, i) => (
                 <div key={i} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold"
                   style={{
@@ -529,7 +454,7 @@ export default function Home() {
                 {[
                   { icon: <Clock size={13} />, text: <>영상당 <strong style={{ color: "#C084FC" }}>10~15분</strong> 시청 후 따라하기</> },
                   { icon: <CheckCircle2 size={13} />, text: <>하루 <strong style={{ color: "#C084FC" }}>1시간 이내</strong> 완료 가능</> },
-                  { icon: <Calendar size={13} />, text: <>과제 마감: <strong style={{ color: "#C084FC" }}>다음 날 낮 12시</strong></> },
+                  { icon: <Calendar size={13} />, text: <>과제 마감: <strong style={{ color: "#C084FC" }}>다음 날 낮 2시</strong></> },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs" style={{ color: "rgba(240,238,255,0.55)" }}>
                     <span style={{ color: "#A855F7" }}>{item.icon}</span>
@@ -753,64 +678,7 @@ export default function Home() {
               👉 신청서 작성 후 입금 계좌로 수강료 납부 시 등록 완료
             </motion.p>
 
-            {/* SNS 공유 버튼 */}
-            <motion.div variants={fadeUp} className="mt-10">
-              <p className="text-sm font-semibold mb-4" style={{ color: "rgba(240,238,255,0.45)" }}>
-                <Share2 size={14} className="inline mr-1.5 mb-0.5" />
-                이 과정을 주변에 공유해 주세요!
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {/* 카카오톡 */}
-                <button
-                  onClick={handleKakaoShare}
-                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
-                  style={{
-                    background: "#FEE500",
-                    color: "#191919",
-                    boxShadow: "0 4px 16px rgba(254,229,0,0.3)",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#191919">
-                    <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.63 1.614 4.938 4.036 6.318L5 21l4.868-2.59A11.3 11.3 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
-                  </svg>
-                  카카오톡 공유
-                </button>
 
-                {/* 인스타그램 */}
-                <button
-                  onClick={handleInstagramShare}
-                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
-                  style={{
-                    background: "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                    color: "white",
-                    boxShadow: "0 4px 16px rgba(220,39,67,0.35)",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
-                >
-                  <Instagram size={17} />
-                  인스타그램 공유
-                </button>
-
-                {/* URL 복사 */}
-                <button
-                  onClick={handleCopyLink}
-                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm transition-all"
-                  style={{
-                    background: copied ? "rgba(168,85,247,0.25)" : "rgba(255,255,255,0.07)",
-                    color: copied ? "#C084FC" : "rgba(240,238,255,0.7)",
-                    border: `1px solid ${copied ? "rgba(168,85,247,0.5)" : "rgba(255,255,255,0.12)"}`,
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-                  onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
-                >
-                  <Copy size={15} />
-                  {copied ? "복사됨 ✓" : "링크 복사"}
-                </button>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
