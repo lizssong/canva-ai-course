@@ -1,9 +1,9 @@
 /*
- * Design: 모던 에듀테크 그라디언트 랜딩 페이지
- * - 보라-핑크 그라디언트 히어로 섹션
- * - Before/After, 커리큘럼, 일정, 강사 소개, CTA 섹션
- * - 모바일 퍼스트 반응형 디자인
- * - framer-motion 스크롤 애니메이션
+ * Design: 다크 프리미엄 에듀테크 랜딩 페이지
+ * - 배경: #0D0B1A 딥 다크 네이비
+ * - 포인트: 보라(#A855F7) + 마젠타(#EC4899) + 골드(#F59E0B)
+ * - 글래스모피즘 카드, 네온 글로우, 그라디언트 텍스트
+ * - 위드AI솔루션 로고 좌상단 배치
  */
 
 import { motion } from "framer-motion";
@@ -26,46 +26,36 @@ import {
 
 const GOOGLE_FORM_URL = "https://forms.gle/fPqsBHYP691gBzXX6";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-main-RmVEd3XZo42he7GTgQWPsN.webp";
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/hero-dark-premium-b9isKLFNHQRkEwx8TtVU9G.webp";
 const CERT_BADGE = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/certificate-badge-9pDc7uQ4KFzmrjGArUuESa.webp";
-const CURRICULUM_BG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/curriculum-bg-eVfdog6GivLeg9LGSds4kn.webp";
+const LOGO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/114049990/YdgtC7PpC5Kr9cJZ6Lu7yX/withaisolution-logo-Jmgu8VHT7BQh4uSa5oeSgU.webp";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
-
-const stagger = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
+const stagger = { visible: { transition: { staggerChildren: 0.09 } } };
 
 const curriculum = [
-  { no: "01", icon: "🖥️", title: "캔바 인터페이스 완전 정복", desc: "템플릿 활용법, 그리드·텍스트·이미지·도형 넣기" },
-  { no: "02", icon: "✨", title: "POP 효과로 홍보물 만들기", desc: "시선을 사로잡는 텍스트 & 그래픽 효과" },
+  { no: "01", icon: "🖥️", title: "캔바 인터페이스 완전 정복", desc: "기본 캔바 인터페이스 이해, 템플릿 활용법, 그리드·텍스트·이미지·도형 넣기" },
+  { no: "02", icon: "✨", title: "POP 효과로 홍보물 만들기", desc: "시선을 사로잡는 POP 효과 적용 & 퀄리티 있는 홍보물 제작" },
   { no: "03", icon: "🤖", title: "캔바AI로 캐릭터·이미지 생성", desc: "AI 프롬프트로 나만의 캐릭터와 이미지 창작" },
   { no: "04", icon: "🪄", title: "사진 편집 & Magic Studio", desc: "배경 제거, AI 확장, 마법 편집 기능 마스터" },
   { no: "05", icon: "🎨", title: "컬러링북 만들기", desc: "아이들이 좋아하는 나만의 컬러링북 제작" },
-  { no: "06", icon: "🖌️", title: "수채화 라인아트 + 디지털아트", desc: "작품 제작 후 목업(Mock-up)에 적용하기" },
-  { no: "07", icon: "💫", title: "포토샵 효과 내기", desc: "돈 버는 미러링 효과, 얼굴 반 그림자·질감 표현" },
+  { no: "06", icon: "🖌️", title: "수채화 라인아트 + 디지털아트", desc: "수채화 라인아트 + 디지털아트 만들어서 목업 넣기" },
+  { no: "07", icon: "💫", title: "포토샵 효과 내기", desc: "돈 버는 미러링 효과 + 얼굴 반 그림자와 질감 넣기" },
   { no: "08", icon: "🎬", title: "스탑모션 만들기", desc: "생동감 넘치는 짧은 영상 콘텐츠 제작" },
   { no: "09", icon: "📖", title: "전자책 디자인하기", desc: "내 지식을 수익화하는 전자책 표지·내지 디자인" },
   { no: "10", icon: "🌐", title: "포트폴리오 홈페이지 만들기", desc: "나를 알리는 멋진 웹사이트 직접 제작" },
 ];
 
 const liveSchedule = [
-  { date: "3월 28일 (토)", time: "저녁 8시", type: "ZOOM 라이브" },
-  { date: "4월 1일 (수)", time: "저녁 8시", type: "ZOOM 라이브" },
-  { date: "4월 10일 (금)", time: "저녁 8시", type: "ZOOM 라이브" },
+  { date: "3월 28일 (토)", time: "저녁 8시" },
+  { date: "4월 1일 (수)", time: "저녁 8시" },
+  { date: "4월 10일 (금)", time: "저녁 8시" },
 ];
 
-const vodSchedule = [
-  "3월 30일",
-  "4월 2일",
-  "4월 3일",
-  "4월 4일",
-  "4월 7일",
-  "4월 8일",
-];
+const vodSchedule = ["3월 30일", "4월 2일", "4월 3일", "4월 4일", "4월 7일", "4월 8일"];
 
 const targets = [
   "캔바 기초는 알지만 강사·전문가 수준으로 업그레이드하고 싶은 분",
@@ -79,7 +69,7 @@ const targets = [
 const beforeList = [
   "남들이 만든 템플릿에 글자만 겨우 수정하는 수준",
   "AI 기능이 있다는데 어떻게 쓰는지 몰라 방치 중",
-  "포토샵 같은 고급 효과를 내고 싶지만 툴이 어려워 포기",
+  "포토샵 같은 고급 효과를 내고 싶지만 어려워 포기",
   "나만의 포트폴리오나 전자책을 만들 엄두가 안 남",
   "캔바 강의를 해보고 싶지만 커리큘럼 짤 자신이 없음",
 ];
@@ -87,7 +77,7 @@ const beforeList = [
 const afterList = [
   "백지상태에서도 원하는 디자인을 뚝딱 만들어내는 금손!",
   "캔바 AI를 자유자재로 활용해 캐릭터와 이미지를 창작",
-  "포토샵 부럽지 않은 고급 스킬 장착",
+  "포토샵 부럽지 않은 고급 스킬 완벽 장착",
   "나만의 전자책과 포트폴리오 웹사이트 완벽 구축",
   "캔바 강사로 활동할 수 있는 탄탄한 실력 및 노하우 확보!",
 ];
@@ -98,232 +88,222 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-[Noto_Sans_KR]">
+    <div className="min-h-screen" style={{ background: "#0D0B1A", color: "#F0EEFF" }}>
+
       {/* ── NAVBAR ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100 shadow-sm">
+      <nav
+        className="fixed top-0 left-0 right-0 z-50"
+        style={{
+          background: "rgba(13, 11, 26, 0.85)",
+          backdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(168, 85, 247, 0.18)",
+        }}
+      >
         <div className="container flex items-center justify-between h-14">
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-black gradient-text">캔바AI연구소</span>
-            <span className="hidden sm:inline text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">민경쌤</span>
+          {/* Logo */}
+          <div className="flex items-center gap-2.5">
+            <img src={LOGO_IMG} alt="위드AI솔루션" className="h-7 w-auto object-contain" />
           </div>
           <button
             onClick={handleApply}
-            className="btn-gradient text-sm font-bold px-4 py-2 rounded-full"
+            className="btn-premium text-sm font-bold px-5 py-2 rounded-full"
           >
-            지금 신청하기 →
+            신청하기 →
           </button>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-14">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
-        {/* Decorative blobs */}
-        <div className="absolute top-20 right-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-0 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl" />
+        {/* BG image */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${HERO_BG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.55,
+          }}
+        />
+        {/* Overlay gradient */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(180deg, rgba(13,11,26,0.3) 0%, rgba(13,11,26,0.7) 60%, #0D0B1A 100%)" }}
+        />
+        {/* Glow orbs */}
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%)" }} />
+        <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.18) 0%, transparent 70%)" }} />
 
-        <div className="container relative z-10 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left: Text */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-              className="space-y-6"
-            >
-              <motion.div variants={fadeUp}>
-                <span className="inline-flex items-center gap-1.5 bg-purple-100 text-purple-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                  <Sparkles size={14} />
-                  속성 단기과정 · 자격증 발급
-                </span>
-              </motion.div>
-
-              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gray-900">
-                캔바 기초부터<br />
-                <span className="gradient-text">AI 강사</span>까지<br />
-                단기 속성으로!
-              </motion.h1>
-
-              <motion.p variants={fadeUp} className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                캔바지국장 <strong className="text-purple-700">민경쌤</strong>과 함께하는<br />
-                <strong>캔바AI강사심화과정(2급)</strong><br />
-                2주 만에 실전 스킬 10가지 완성 + 자격증 취득!
-              </motion.p>
-
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-purple-100">
-                  <Clock size={16} className="text-purple-500" />
-                  <span className="text-sm font-semibold text-gray-700">하루 1시간 이내</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-purple-100">
-                  <Video size={16} className="text-pink-500" />
-                  <span className="text-sm font-semibold text-gray-700">ZOOM 라이브 + VOD</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-purple-100">
-                  <GraduationCap size={16} className="text-purple-500" />
-                  <span className="text-sm font-semibold text-gray-700">국제 자격증 발급</span>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 pt-2">
-                <button
-                  onClick={handleApply}
-                  className="btn-gradient btn-pulse text-lg font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-2"
-                >
-                  <ExternalLink size={20} />
-                  지금 바로 신청하기
-                </button>
-                <a
-                  href="#curriculum"
-                  className="flex items-center justify-center gap-2 text-purple-700 font-bold px-6 py-4 rounded-2xl border-2 border-purple-200 hover:bg-purple-50 transition-colors"
-                >
-                  커리큘럼 보기
-                  <ChevronDown size={18} />
-                </a>
-              </motion.div>
+        <div className="container relative z-10 py-20 lg:py-28">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="max-w-3xl"
+          >
+            <motion.div variants={fadeUp} className="mb-5">
+              <span className="section-tag">
+                <Sparkles size={12} />
+                캔바AI연구소 · 민경쌤
+              </span>
             </motion.div>
 
-            {/* Right: Hero image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, x: 40 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src={HERO_IMG}
-                  alt="캔바AI강사심화과정 민경쌤"
-                  className="w-full object-cover"
-                />
-                {/* Overlay badge */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3">
-                  <img src={CERT_BADGE} alt="자격증" className="w-12 h-12 object-contain float-anim" />
-                  <div>
-                    <p className="font-black text-gray-900 text-sm">국제디지털콘텐츠협회</p>
-                    <p className="text-purple-600 font-bold text-xs">캔바심화과정 2급 자격증 발급</p>
-                  </div>
+            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-4">
+              캔바 강사로<br />
+              <span className="shimmer-text">레벨업하고 싶다면?</span>
+            </motion.h1>
+
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-4xl font-black mb-6"
+              style={{ color: "#F0EEFF" }}>
+              <span className="gradient-text">캔바AI강사 심화과정 2급</span> 오픈!
+            </motion.h2>
+
+            <motion.p variants={fadeUp} className="text-base sm:text-lg leading-relaxed mb-8"
+              style={{ color: "rgba(240,238,255,0.72)" }}>
+              포토샵 효과부터 스탑모션, 포트폴리오 홈페이지까지<br />
+              <strong style={{ color: "#C084FC" }}>실전 8가지 핵심 스킬</strong>을 단기 속성으로 완성
+            </motion.p>
+
+            {/* Feature badges */}
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-2.5 mb-8">
+              {[
+                { icon: <Clock size={13} />, label: "하루 1시간 이내" },
+                { icon: <Video size={13} />, label: "ZOOM 라이브 + VOD" },
+                { icon: <GraduationCap size={13} />, label: "국제 자격증 발급" },
+                { icon: <BookOpen size={13} />, label: "총 10개 과제" },
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold"
+                  style={{
+                    background: "rgba(168,85,247,0.1)",
+                    border: "1px solid rgba(168,85,247,0.3)",
+                    color: "#C084FC",
+                  }}>
+                  {b.icon}{b.label}
                 </div>
-              </div>
+              ))}
             </motion.div>
-          </div>
+
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleApply}
+                className="btn-premium btn-pulse text-base font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-2"
+              >
+                <ExternalLink size={18} />
+                지금 바로 신청하기
+              </button>
+              <a
+                href="#curriculum"
+                className="btn-gold-outline flex items-center justify-center gap-2 px-6 py-4 rounded-2xl text-base font-bold"
+              >
+                커리큘럼 보기
+                <ChevronDown size={16} />
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── WHY CANVA NOW ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ background: "#0D0B1A" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto text-center mb-14"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="text-center mb-14"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-block bg-pink-100 text-pink-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                왜 지금 캔바인가요?
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><Zap size={12} />왜 지금 캔바인가요?</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-4">
               TV 광고에도 나오는 캔바,<br />
-              <span className="gradient-text">이제 강사로 도약할 때입니다</span>
+              <span className="gradient-text">강사로 도약할 최적의 타이밍</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-600 text-lg leading-relaxed">
+            <motion.p variants={fadeUp} style={{ color: "rgba(240,238,255,0.6)" }} className="text-base leading-relaxed">
               어린이집·유치원 교사 연수, 초중학교 수업, 기업 출강 어디서든<br />
-              <strong>"캔바 어떻게 쓰나요?"</strong> 라는 질문이 가장 많이 나옵니다.<br />
-              AI 시대에 캔바는 이제 <strong className="text-purple-700">기본 중의 기본 툴</strong>이 되었습니다.
+              <strong style={{ color: "#C084FC" }}>"캔바 어떻게 쓰나요?"</strong> 라는 질문이 가장 많이 나옵니다.
             </motion.p>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="grid sm:grid-cols-3 gap-6"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="grid sm:grid-cols-3 gap-5"
           >
             {[
-              { icon: <Users size={28} className="text-purple-500" />, title: "교사 연수 폭발적 수요", desc: "어린이집·유치원·초중학교 교사 연수에서 캔바 강의 요청이 급증하고 있습니다." },
-              { icon: <Monitor size={28} className="text-pink-500" />, title: "기업 필수 툴로 자리매김", desc: "마케팅·교육·인사팀 할 것 없이 기업에서 캔바 교육을 적극 도입 중입니다." },
-              { icon: <Zap size={28} className="text-purple-500" />, title: "캔바 광고까지 등장", desc: "TV·유튜브 광고로 대중화된 지금, 캔바 강사의 가치가 가장 높은 시점입니다." },
+              { icon: <Users size={26} style={{ color: "#A855F7" }} />, title: "교사 연수 폭발적 수요", desc: "어린이집·유치원·초중학교 교사 연수에서 캔바 강의 요청이 급증. 특히 어린이집 교사 연수가 가장 많습니다." },
+              { icon: <Monitor size={26} style={{ color: "#EC4899" }} />, title: "기업 필수 툴로 자리매김", desc: "마케팅·교육·인사팀 할 것 없이 기업에서 캔바 교육을 적극 도입 중. AI를 다루면서 캔바는 기본 툴이 되었습니다." },
+              { icon: <Sparkles size={26} style={{ color: "#F59E0B" }} />, title: "캔바 광고까지 등장", desc: "TV·유튜브 광고로 대중화된 지금, 모두가 궁금해하는 캔바. 강사의 가치가 가장 높은 시점입니다." },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className="glass-card rounded-2xl p-6 hover:shadow-lg transition-shadow"
-              >
-                <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+              <motion.div key={i} variants={fadeUp} className="glass-card rounded-2xl p-6 transition-all">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: "rgba(168,85,247,0.12)", border: "1px solid rgba(168,85,247,0.2)" }}>
                   {item.icon}
                 </div>
-                <h3 className="font-black text-gray-900 text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-black text-base mb-2" style={{ color: "#F0EEFF" }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.55)" }}>{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── BEFORE / AFTER ── */}
-      <section className="py-20 section-purple">
+      <section className="py-20" style={{ background: "linear-gradient(180deg, #0D0B1A 0%, #110E22 100%)" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="text-center mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="text-center mb-12"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-block bg-purple-100 text-purple-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                수강 전후 변화
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><Star size={12} />수강 전후 변화</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900">
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black">
               수강 전과 후,<br />
               <span className="gradient-text">당신의 모습이 달라집니다!</span>
             </motion.h2>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
           >
             {/* Before */}
-            <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 border-2 border-red-100 shadow-sm">
+            <motion.div variants={fadeUp} className="rounded-3xl p-7"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(239,68,68,0.2)" }}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                  <span className="text-xl">😥</span>
-                </div>
-                <h3 className="text-xl font-black text-gray-900">수강 전 (Before)</h3>
+                <span className="text-2xl">😥</span>
+                <h3 className="text-lg font-black" style={{ color: "#F0EEFF" }}>수강 전 (Before)</h3>
               </div>
               <ul className="space-y-3">
                 {beforeList.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <XCircle size={18} className="text-red-400 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 text-sm leading-relaxed">{item}</span>
+                    <XCircle size={16} className="mt-0.5 shrink-0" style={{ color: "#F87171" }} />
+                    <span className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.6)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
 
             {/* After */}
-            <motion.div variants={fadeUp} className="bg-gradient-to-br from-purple-600 to-pink-500 rounded-3xl p-8 shadow-lg text-white">
+            <motion.div variants={fadeUp} className="rounded-3xl p-7"
+              style={{
+                background: "linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(168,85,247,0.12) 50%, rgba(236,72,153,0.15) 100%)",
+                border: "1px solid rgba(168,85,247,0.4)",
+                boxShadow: "0 0 30px rgba(168,85,247,0.12)",
+              }}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-xl">😍</span>
-                </div>
-                <h3 className="text-xl font-black">수강 후 (After)</h3>
+                <span className="text-2xl">🌟</span>
+                <h3 className="text-lg font-black" style={{ color: "#F0EEFF" }}>수강 후 (After)</h3>
               </div>
               <ul className="space-y-3">
                 {afterList.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-yellow-300 mt-0.5 shrink-0" />
-                    <span className="text-white/90 text-sm leading-relaxed">{item}</span>
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: "#A855F7" }} />
+                    <span className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.85)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -332,56 +312,45 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── CURRICULUM ── */}
-      <section id="curriculum" className="py-20 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: `url(${CURRICULUM_BG})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        />
-        <div className="container relative z-10">
+      <section id="curriculum" className="py-20" style={{ background: "#0D0B1A" }}>
+        <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="text-center mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="text-center mb-12"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-1.5 bg-purple-100 text-purple-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                <BookOpen size={14} />
-                총 10개 과제
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><BookOpen size={12} />CURRICULUM</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
-              <span className="gradient-text">실전 커리큘럼</span> 안내
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-3">
+              <span className="gradient-text">10가지 핵심 커리큘럼</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-600">
-              현업 강사가 실제로 강의에서 쓰는 스킬만 담았습니다
+            <motion.p variants={fadeUp} style={{ color: "rgba(240,238,255,0.5)" }} className="text-sm">
+              현업 강사가 실제 강의에서 쓰는 스킬만 담았습니다
             </motion.p>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {curriculum.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                whileHover={{ y: -4 }}
-                className="glass-card rounded-2xl p-5 hover:shadow-md transition-all"
+                whileHover={{ y: -4, borderColor: "rgba(168,85,247,0.5)" }}
+                className="glass-card rounded-2xl p-5 transition-all"
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl mb-1">{item.icon}</span>
-                    <span className="text-xs font-black text-purple-400">{item.no}</span>
+                <div className="flex items-start gap-3">
+                  <div className="flex flex-col items-center gap-1 pt-0.5">
+                    <span className="text-xl">{item.icon}</span>
+                    <span className="text-xs font-black" style={{ color: "rgba(168,85,247,0.6)" }}>{item.no}</span>
                   </div>
                   <div>
-                    <h3 className="font-black text-gray-900 text-sm mb-1 leading-snug">{item.title}</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                    <h3 className="font-black text-sm mb-1 leading-snug" style={{ color: "#F0EEFF" }}>{item.title}</h3>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(240,238,255,0.45)" }}>{item.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -390,93 +359,88 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── SCHEDULE ── */}
-      <section className="py-20 section-purple">
+      <section className="py-20" style={{ background: "#110E22" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="text-center mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="text-center mb-12"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-1.5 bg-purple-100 text-purple-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                <Calendar size={14} />
-                수업 방식 및 일정
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><Calendar size={12} />SCHEDULE</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
-              <span className="gradient-text">하이브리드 수업</span>으로<br />
-              내 페이스에 맞게!
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-3">
+              <span className="gradient-text">3주 완성 스케줄</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-600">
+            <motion.p variants={fadeUp} style={{ color: "rgba(240,238,255,0.5)" }} className="text-sm">
               실시간 ZOOM 라이브 + VOD 영상 병행 수강 가능
             </motion.p>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
           >
             {/* Live */}
-            <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 shadow-sm border border-purple-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                  <span className="text-red-500 font-black text-xs">LIVE</span>
-                </div>
+            <motion.div variants={fadeUp} className="glass-card rounded-3xl p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="px-2.5 py-1 rounded-full text-xs font-black"
+                  style={{ background: "rgba(239,68,68,0.15)", border: "1px solid rgba(239,68,68,0.3)", color: "#F87171" }}>
+                  ● LIVE
+                </span>
                 <div>
-                  <h3 className="font-black text-gray-900">실시간 ZOOM 라이브</h3>
-                  <p className="text-xs text-gray-500">저녁 8시 · 약 1시간</p>
+                  <h3 className="font-black text-sm" style={{ color: "#F0EEFF" }}>실시간 ZOOM (1시간 × 3회)</h3>
                 </div>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {liveSchedule.map((s, i) => (
-                  <div key={i} className="flex items-center justify-between bg-purple-50 rounded-xl px-4 py-3">
-                    <span className="font-bold text-gray-800 text-sm">{s.date}</span>
-                    <span className="text-purple-600 font-semibold text-xs bg-purple-100 px-2 py-1 rounded-full">{s.time}</span>
+                  <div key={i} className="flex items-center justify-between rounded-xl px-4 py-3"
+                    style={{ background: "rgba(168,85,247,0.08)", border: "1px solid rgba(168,85,247,0.18)" }}>
+                    <span className="font-bold text-sm" style={{ color: "#F0EEFF" }}>{s.date}</span>
+                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                      style={{ background: "rgba(168,85,247,0.2)", color: "#C084FC" }}>{s.time}</span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs text-gray-500 bg-gray-50 rounded-xl p-3">
-                💡 실시간 참여가 어려우신 분도 <strong>녹화본으로 수강 가능</strong>합니다!
+              <p className="mt-4 text-xs rounded-xl p-3"
+                style={{ background: "rgba(168,85,247,0.06)", color: "rgba(240,238,255,0.5)", border: "1px solid rgba(168,85,247,0.12)" }}>
+                💡 실시간 참여가 어려우신 분도 <strong style={{ color: "#C084FC" }}>녹화본으로 수강 가능</strong>합니다!
               </p>
             </motion.div>
 
             {/* VOD */}
-            <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 shadow-sm border border-purple-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Video size={18} className="text-blue-500" />
+            <motion.div variants={fadeUp} className="glass-card rounded-3xl p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.25)" }}>
+                  <Video size={15} style={{ color: "#F59E0B" }} />
                 </div>
-                <div>
-                  <h3 className="font-black text-gray-900">VOD 영상 업로드</h3>
-                  <p className="text-xs text-gray-500">자율 수강 · 과제 제출</p>
-                </div>
+                <h3 className="font-black text-sm" style={{ color: "#F0EEFF" }}>영상 업로드 (자율 수강)</h3>
               </div>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {vodSchedule.map((d, i) => (
-                  <span key={i} className="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">{d}</span>
+                  <span key={i} className="text-xs font-bold px-3 py-1.5 rounded-full"
+                    style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.2)", color: "#F59E0B" }}>
+                    {d}
+                  </span>
                 ))}
               </div>
-              <div className="space-y-2 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <Clock size={14} className="text-purple-400" />
-                  <span>영상당 <strong>10~15분</strong> 시청 후 따라하기</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-green-400" />
-                  <span>하루 <strong>1시간 이내</strong> 완료 가능</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={14} className="text-pink-400" />
-                  <span>과제 마감: <strong>다음 날 낮 12시</strong></span>
-                </div>
+              <div className="space-y-2.5">
+                {[
+                  { icon: <Clock size={13} />, text: <>영상당 <strong style={{ color: "#C084FC" }}>10~15분</strong> 시청 후 따라하기</> },
+                  { icon: <CheckCircle2 size={13} />, text: <>하루 <strong style={{ color: "#C084FC" }}>1시간 이내</strong> 완료 가능</> },
+                  { icon: <Calendar size={13} />, text: <>과제 마감: <strong style={{ color: "#C084FC" }}>다음 날 낮 12시</strong></> },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs" style={{ color: "rgba(240,238,255,0.55)" }}>
+                    <span style={{ color: "#A855F7" }}>{item.icon}</span>
+                    <span>{item.text}</span>
+                  </div>
+                ))}
               </div>
-              <p className="mt-4 text-xs text-orange-600 bg-orange-50 rounded-xl p-3">
+              <p className="mt-4 text-xs rounded-xl p-3"
+                style={{ background: "rgba(245,158,11,0.06)", color: "rgba(245,158,11,0.7)", border: "1px solid rgba(245,158,11,0.15)" }}>
                 ⚠️ 운영 공정성을 위해 개별 사정에 따른 선공개 요청은 불가합니다.
               </p>
             </motion.div>
@@ -484,74 +448,72 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── TARGET AUDIENCE ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ background: "#0D0B1A" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="text-center mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="text-center mb-12"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-1.5 bg-pink-100 text-pink-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                <Star size={14} />
-                이런 분께 추천합니다
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><Star size={12} />TARGET</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900">
-              <span className="gradient-text">나도 해당될까요?</span>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black">
+              <span className="gradient-text">이런 분께 추천합니다!</span>
             </motion.h2>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="max-w-2xl mx-auto space-y-3"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="max-w-2xl mx-auto space-y-3"
           >
             {targets.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className="flex items-start gap-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl px-5 py-4 border border-purple-100"
+              <motion.div key={i} variants={fadeUp}
+                className="flex items-start gap-4 rounded-2xl px-5 py-4 transition-all"
+                style={{
+                  background: "rgba(168,85,247,0.06)",
+                  border: "1px solid rgba(168,85,247,0.18)",
+                }}
+                whileHover={{ borderColor: "rgba(168,85,247,0.4)", background: "rgba(168,85,247,0.1)" }}
               >
-                <CheckCircle2 size={20} className="text-purple-500 mt-0.5 shrink-0" />
-                <span className="text-gray-800 font-medium text-sm leading-relaxed">{item}</span>
+                <div className="glow-dot mt-1.5" />
+                <span className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.8)" }}>{item}</span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── INSTRUCTOR ── */}
-      <section className="py-20 bg-gradient-to-br from-purple-700 to-pink-600 text-white">
+      <section className="py-20" style={{ background: "#110E22" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="max-w-3xl mx-auto"
           >
             <motion.div variants={fadeUp} className="text-center mb-10">
-              <span className="inline-block bg-white/20 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                강사 소개
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black mb-2">민경쌤은 누구인가요?</h2>
+              <span className="section-tag mb-4 inline-flex">강사 소개</span>
+              <h2 className="text-3xl sm:text-4xl font-black mt-4">
+                <span className="gradient-text">민경쌤</span>은 누구인가요?
+              </h2>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+            <motion.div variants={fadeUp} className="glass-card rounded-3xl p-8">
               <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center text-4xl shrink-0">
+                <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0"
+                  style={{ background: "rgba(168,85,247,0.15)", border: "1px solid rgba(168,85,247,0.3)" }}>
                   👩‍🏫
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-4 flex-1">
                   <div>
-                    <h3 className="text-2xl font-black">쏭리즈 민경쌤</h3>
-                    <p className="text-purple-200 font-semibold">캔바지국장 · 크리메타쏭 대표 · 위드AI솔루션 대표</p>
+                    <h3 className="text-xl font-black" style={{ color: "#F0EEFF" }}>쏭리즈 민경쌤</h3>
+                    <p className="text-sm mt-1" style={{ color: "#A855F7" }}>
+                      캔바지국장 · 크리메타쏭 대표 · 위드AI솔루션 대표
+                    </p>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-2">
                     {[
@@ -565,12 +527,12 @@ export default function Home() {
                       "어린이집·기업·교원 연수 다수",
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-yellow-300 rounded-full shrink-0" />
-                        <span className="text-white/90 text-sm">{item}</span>
+                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#A855F7", boxShadow: "0 0 6px rgba(168,85,247,0.8)" }} />
+                        <span className="text-xs" style={{ color: "rgba(240,238,255,0.7)" }}>{item}</span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.55)" }}>
                     두 아이를 키우는 워킹맘으로, 초중학생부터 교사·기업 임직원까지 폭넓게 강의하며 현장에서 직접 검증된 노하우를 전달합니다. 리즈, 요코, 조코 캐릭터의 작가이기도 합니다!
                   </p>
                 </div>
@@ -580,29 +542,25 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="neon-divider" />
+
       {/* ── CERTIFICATE ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ background: "#0D0B1A" }}>
         <div className="container">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto text-center"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
+            variants={stagger} className="max-w-3xl mx-auto text-center"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-1.5 bg-yellow-100 text-yellow-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-                <GraduationCap size={14} />
-                자격증 발급 과정
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag"><GraduationCap size={12} />자격증 안내</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-gray-900 mb-4">
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black mb-6 mt-4">
               수료 후 <span className="gradient-text">국제 자격증</span> 취득!
             </motion.h2>
-            <motion.div variants={fadeUp} className="flex justify-center mb-6">
-              <img src={CERT_BADGE} alt="자격증 배지" className="w-32 h-32 object-contain float-anim" />
+            <motion.div variants={fadeUp} className="flex justify-center mb-8">
+              <img src={CERT_BADGE} alt="자격증" className="w-28 h-28 object-contain float-anim" />
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-8 border border-purple-100 text-left space-y-3">
+            <motion.div variants={fadeUp} className="gold-card rounded-3xl p-7 text-left space-y-3.5">
               {[
                 "본 과정 이수 시 국제디지털콘텐츠협회 캔바심화과정 자격증 2급 발급 (비용 별도)",
                 "수료하신 분에 한하여 AI올인원자격증과정 연계 가능",
@@ -610,8 +568,8 @@ export default function Home() {
                 "자격증은 강사 활동, 이력서, 포트폴리오에 활용 가능",
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="text-purple-500 mt-0.5 shrink-0" />
-                  <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: "#F59E0B" }} />
+                  <span className="text-sm leading-relaxed" style={{ color: "rgba(240,238,255,0.75)" }}>{item}</span>
                 </div>
               ))}
             </motion.div>
@@ -620,41 +578,39 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-24 bg-gradient-to-br from-purple-700 via-purple-600 to-pink-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
-        </div>
+      <section className="py-24 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #1A0D2E 0%, #0D0B1A 50%, #1A0D2E 100%)" }}>
+        {/* Glow orbs */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)" }} />
         <div className="container relative z-10 text-center">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
             variants={stagger}
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-block bg-white/20 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-6">
-                마감 전 서둘러 주세요!
-              </span>
+            <motion.div variants={fadeUp} className="mb-4">
+              <span className="section-tag">마감 전 서둘러 주세요!</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-black mb-4 leading-tight">
+            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-black mb-4 mt-4 leading-tight">
               지금 바로 시작하세요!<br />
-              <span className="text-yellow-300">캔바 강사의 꿈</span>이 현실이 됩니다
+              <span className="shimmer-text">캔바 강사의 꿈이 현실이 됩니다</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+            <motion.p variants={fadeUp} className="text-base mb-8 max-w-lg mx-auto"
+              style={{ color: "rgba(240,238,255,0.55)" }}>
               단기 속성 · 하루 1시간 · 자격증 취득<br />
               민경쌤과 함께라면 누구나 금손이 될 수 있습니다!
             </motion.p>
             <motion.div variants={fadeUp}>
               <button
                 onClick={handleApply}
-                className="inline-flex items-center gap-3 bg-white text-purple-700 font-black text-xl px-10 py-5 rounded-2xl shadow-2xl hover:shadow-white/30 hover:-translate-y-1 transition-all duration-300"
+                className="btn-premium inline-flex items-center gap-3 text-lg font-black px-10 py-5 rounded-2xl"
               >
-                <ExternalLink size={22} />
+                <ExternalLink size={20} />
                 캔바AI강사심화과정(2급) 신청하기
               </button>
             </motion.div>
-            <motion.p variants={fadeUp} className="mt-6 text-white/60 text-sm">
+            <motion.p variants={fadeUp} className="mt-5 text-xs"
+              style={{ color: "rgba(240,238,255,0.35)" }}>
               👉 신청서 작성 후 입금 계좌로 수강료 납부 시 등록 완료
             </motion.p>
           </motion.div>
@@ -662,24 +618,31 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-gray-900 text-gray-400 py-10">
+      <footer className="py-10" style={{ background: "#080612", borderTop: "1px solid rgba(168,85,247,0.15)" }}>
         <div className="container text-center space-y-2">
-          <p className="text-white font-black text-lg gradient-text">민경쌤의 캔바AI연구소</p>
-          <p className="text-sm">크리메타쏭 대표 · 캔바지국장 · 생성형AI 전문강사 쏭리즈 민경쌤</p>
-          <p className="text-sm">아바톡 크리퐁 앰버서더 · 수퍼톤 앰버서더</p>
-          <div className="pt-4 border-t border-gray-800 text-xs text-gray-600">
-            © 2025 민경쌤의 캔바AI연구소. All rights reserved.
+          <div className="flex justify-center mb-3">
+            <img src={LOGO_IMG} alt="위드AI솔루션" className="h-6 w-auto object-contain opacity-70" />
           </div>
+          <p className="text-sm font-black gradient-text">민경쌤의 캔바AI연구소</p>
+          <p className="text-xs" style={{ color: "rgba(240,238,255,0.4)" }}>
+            크리메타쏭 대표 · 캔바지국장 · 생성형AI 전문강사 쏭리즈 민경쌤
+          </p>
+          <p className="text-xs" style={{ color: "rgba(240,238,255,0.3)" }}>
+            아바톡 크리퐁 앰버서더 · 수퍼톤 앰버서더
+          </p>
+          <p className="text-xs mt-4" style={{ color: "rgba(240,238,255,0.2)" }}>
+            © 2025 위드AI솔루션 · 민경쌤의 캔바AI연구소. All rights reserved.
+          </p>
         </div>
       </footer>
 
-      {/* ── FLOATING CTA BUTTON (mobile) ── */}
-      <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 md:hidden">
+      {/* ── FLOATING CTA (mobile) ── */}
+      <div className="fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 md:hidden">
         <button
           onClick={handleApply}
-          className="btn-gradient btn-pulse w-full max-w-sm font-black text-base py-4 rounded-2xl flex items-center justify-center gap-2 shadow-xl"
+          className="btn-premium btn-pulse w-full max-w-sm font-black text-base py-4 rounded-2xl flex items-center justify-center gap-2 shadow-2xl"
         >
-          <ExternalLink size={18} />
+          <ExternalLink size={17} />
           지금 신청하기
         </button>
       </div>
